@@ -2,7 +2,7 @@ from typing import TypeVar
 from models.base_model import BaseModel
 from config.db import Database
 
-M = TypeVar("M")
+M = TypeVar("M", BaseModel, object)
 
 
 class BaseService:
