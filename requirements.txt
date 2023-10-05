@@ -2,6 +2,5 @@ SQLAlchemy
 mysql-connector-python
 uvicorn
 fast-api
-MySQLdb
 pytest
 python-dotenv
