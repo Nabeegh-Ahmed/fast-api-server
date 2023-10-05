@@ -1,3 +1,4 @@
+import datetime
 from typing import TypeVar
 from models.base_model import BaseModel
 from config.db import Database
@@ -31,6 +32,7 @@ class BaseService:
 
     def update(self, entity: M):
         # Database.get_session().add(entity)
+        entity.updated_at = datetime.datetime.utcnow()
         Database.get_session().commit()
         return entity
 
