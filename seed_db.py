@@ -23,7 +23,7 @@ def populate_db(n=10):
         inventory_service.create(
             product_id=product.id, stock=100, unit_cost=10)
         sales_service.create(product_id=product.id,
-                             quantity=1, unit_cost=10, total_cost=10, customer_name="Test Customer")
+                             quantity=1, unit_cost=10, sale_price=10, customer_name="Test Customer")
 
 
 populate_db()

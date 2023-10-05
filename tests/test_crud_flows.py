@@ -103,12 +103,12 @@ def test_sales_flow():
     inventory = inventory_service.create(
         product_id=product.id, stock=100, unit_cost=10)
     sale = sales_service.create(product_id=product.id,
-                                quantity=1, unit_cost=10, total_cost=10, customer_name="Test Customer")
+                                quantity=1, unit_cost=10, sale_price=10, customer_name="Test Customer")
     assert sale.id is not None
     assert sale.product_id == product.id
     assert sale.quantity == 1
     assert sale.unit_cost == 10
-    assert sale.total_cost == 10
+    assert sale.sale_price == 10
     assert sale.customer_name == "Test Customer"
 
     # Get All
@@ -121,20 +121,20 @@ def test_sales_flow():
     assert sales.product_id == product.id
     assert sales.quantity == 1
     assert sales.unit_cost == 10
-    assert sales.total_cost == 10
+    assert sales.sale_price == 10
     assert sales.customer_name == "Test Customer"
 
     # Update
     sales.quantity = 2
     sales.unit_cost = 20
-    sales.total_cost = 20
+    sales.sale_price = 20
     sales.customer_name = "Test Customer 2"
     sales = sales_service.update(sales)
     assert sales.id is not None
     assert sales.product_id == product.id
     assert sales.quantity == 2
     assert sales.unit_cost == 20
-    assert sales.total_cost == 20
+    assert sales.sale_price == 20
     assert sales.customer_name == "Test Customer 2"
 
     # Delete

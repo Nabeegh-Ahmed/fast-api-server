@@ -8,7 +8,7 @@ class SalesModel(BaseModel):
     product_id = Column(ForeignKey("products.id"))
     quantity: Mapped[int] = Column('quantity', Integer, nullable=False)
     unit_cost = Column('unit_cost', Float, nullable=False)
-    total_cost = Column('total_cost', Float, nullable=False)
+    sale_price = Column('sale_price', Float, nullable=False)
     customer_name = Column('customer_name', String(32), nullable=False)
 
     product = relationship(

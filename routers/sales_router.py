@@ -46,7 +46,7 @@ async def update_sales_item(id: str, sales_data: SalesUpdatePayload):
     sales_item = service.get_by_id(id)
     sales_item.quantity = sales_data.quantity or sales_item.quantity
     sales_item.unit_cost = sales_data.unit_cost or sales_item.unit_cost
-    sales_item.total_cost = sales_data.total_cost or sales_item.total_cost
+    sales_item.sale_price = sales_data.sale_price or sales_item.sale_price
     sales_item.customer_name = sales_data.customer_name or sales_item.customer_name
     sales_item = service.update(sales_item)
     return {"sales": sales_item.to_dict()}
