@@ -4,6 +4,8 @@ from sqlalchemy.orm import sessionmaker
 
 from models.base_model import BaseModel
 from models.product_model import ProductModel
+from models.inventory_model import InventoryModel
+from models.sales_model import SalesModel
 
 
 class Database:
@@ -15,15 +17,18 @@ class Database:
     def my_static_method(arg1, arg2):
         return arg1 + arg2
 
-    def __init__(self):
+    @staticmethod
+    def init_connection():
         Database.engine = create_engine("mysql+mysqlconnector://root:%s@localhost/forsit" %
                                         quote_plus("mauFJcuf5dhRMQrjj"), echo=True)
-        BaseModel.metadata.create_all(self.engine)
+        BaseModel.metadata.create_all(Database.engine)
 
-        ProductModel.metadata.create_all(self.engine)
+        ProductModel.metadata.create_all(Database.engine)
+        InventoryModel.metadata.create_all(Database.engine)
+        SalesModel.metadata.create_all(Database.engine)
 
-        Database.session_maker = sessionmaker(bind=self.engine)
-        Database.session = self.session_maker()
+        Database.session_maker = sessionmaker(bind=Database.engine)
+        Database.session = Database.session_maker()
 
     @staticmethod
     def connect():
