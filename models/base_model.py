@@ -1,12 +1,13 @@
 import datetime
 import uuid
-from sqlalchemy import DateTime, Column, String, Boolean
+from sqlalchemy import DateTime, Column, Integer, Boolean, Identity
 from sqlalchemy.orm import declarative_base, Mapped
 
 
 class BaseModel(declarative_base()):
     __abstract__ = True
-    id = Column('id', String(36), default=str(uuid.uuid1()), primary_key=True)
+    id = Column('id', Integer, autoincrement=True,
+                primary_key=True)
     created_at = Column(
         'created_at',
         DateTime(timezone=True),

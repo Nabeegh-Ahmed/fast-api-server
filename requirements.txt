@@ -4,3 +4,4 @@ uvicorn
 fast-api
 MySQLdb
 pytest
+python-dotenv

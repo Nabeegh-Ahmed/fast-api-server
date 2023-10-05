@@ -18,9 +18,9 @@ class Database:
         return arg1 + arg2
 
     @staticmethod
-    def init_connection():
-        Database.engine = create_engine("mysql+mysqlconnector://root:%s@localhost/forsit" %
-                                        quote_plus("mauFJcuf5dhRMQrjj"), echo=True)
+    def init_connection(username: str, host: str, db: str, password: str):
+        Database.engine = create_engine("mysql+mysqlconnector://%s:%s@%s/%s" %
+                                        (username, password, host, db), echo=True)
         BaseModel.metadata.create_all(Database.engine)
 
         ProductModel.metadata.create_all(Database.engine)

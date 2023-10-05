@@ -30,7 +30,7 @@ class BaseService:
         return entity
 
     def update(self, entity: M):
-        Database.get_session().add(entity)
+        # Database.get_session().add(entity)
         Database.get_session().commit()
         return entity
 
